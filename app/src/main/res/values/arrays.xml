@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="boxNumbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="windConditions">
+        <item>No Wind</item>
+        <item>Some Wind</item>
+        <item>Very Windy</item>
+    </string-array>
+
+    <string-array name="cloudConditions">
+        <item>Clear</item>
+        <item>Cloudy</item>
+        <item>Overcast</item>
+        <item>Rainy</item>
+        <item>Snow</item>
+
+    </string-array>
+
+    <string-array name="activities">
+        <item>None</item>
+        <item>Flying Around</item>
+        <item>Courtship/Singing</item>
+        <item>Nest Building</item>
+        <item>Bringing Food to Young</item>
+        <item>Fledging</item>
+
+    </string-array>
+
+
+</resources>

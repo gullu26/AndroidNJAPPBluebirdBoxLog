@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.example.sudarshanseshadri.plainsboropreservenestboxmonitoring">
+
+<application
+    android:versionCode="2"
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="New Jersey Audubon Plainsboro Preserve Bird Box"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:usesCleartextTraffic="true"
+    android:theme="@style/AppTheme">
+    <activity
+        android:name=".MainActivity"
+        android:theme="@style/PlainsboroTheme"
+        android:label="NJAPP Bird Box"
+        >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity
+        android:name=".MainNavActivity"
+        android:theme="@style/PlainsboroTheme"
+        android:label="Home"/>
+    <activity
+        android:name=".LogEntriesActivity"
+        android:label="Boxes"
+        android:theme="@style/PlainsboroTheme" />
+    <activity
+        android:name=".LogEntriesActivityNoEdit"
+        android:label="Boxes"
+        android:theme="@style/PlainsboroTheme" />
+    <activity
+        android:name=".CreateBoxEntryActivity"
+        android:label="New Box"
+        android:theme="@style/PlainsboroTheme" />
+    <activity
+        android:name=".BirdSearchActivity"
+        android:theme="@style/PlainsboroTheme"
+        android:label="Birds"/>
+
+    <activity android:name=".ViewBoxEntryActivity"
+        android:theme="@style/PlainsboroTheme"
+        android:label="Box"/>
+
+
+
+</application>
+
+</manifest>

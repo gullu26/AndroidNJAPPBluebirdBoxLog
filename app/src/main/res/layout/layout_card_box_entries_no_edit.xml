@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_card_layout_box_entries_no_edit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    app:cardBackgroundColor="#fcfcfc">
+
+    <RelativeLayout
+        android:id="@+id/id_card_boxEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/id_imageView_birdImage_noEdit"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@drawable/bluebird" />
+
+        <TextView
+            android:id="@+id/id_textView_boxNumber_noEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/id_imageView_birdImage_noEdit"
+            android:layout_toRightOf="@+id/id_imageView_birdImage_noEdit"
+            android:text="@string/box_number"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/id_textView_birdSpecies_noEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/id_textView_boxNumber_noEdit"
+            android:layout_below="@+id/id_textView_boxNumber_noEdit"
+            android:text="Robin" />
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
