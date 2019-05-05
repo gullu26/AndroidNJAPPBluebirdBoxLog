@@ -40,6 +40,7 @@ public class LogEntriesActivity extends AppCompatActivity {
     private static final String TAG = "LogEntriesActivity";
     SharedPreferences mPrefs;
     private DocumentReference documentReference;
+    private String userID;
 
 
 
@@ -85,20 +86,19 @@ public class LogEntriesActivity extends AppCompatActivity {
         });
 
 
+
         mPrefs=getSharedPreferences("PlainsboroPrefs", Context.MODE_PRIVATE);
-        String userID = mPrefs.getString("userID", "");
-        String path="users/" + userID;
-
-        documentReference= FirebaseFirestore.getInstance().document(path);
+        userID = mPrefs.getString("userID", "");
 
 
-        documentReference.collection("/1").get()
+
+        FirebaseFirestore.getInstance().collection("data").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         completeLoad=true;
                         if (task.isSuccessful()) {
-                            count = task.getResult().size()+1;
+                            count = task.getResult().size()+1; //the number to start on
 
 
                         } else {
@@ -110,6 +110,9 @@ public class LogEntriesActivity extends AppCompatActivity {
 
     }
 
+
+
+
     int count=-1;
     boolean completeLoad=false;
     public void saveNewLogEntryToFirestore(){
@@ -119,56 +122,44 @@ public class LogEntriesActivity extends AppCompatActivity {
         String userID = mPrefs.getString("userID", "");
 
 
-        String path="users/" + userID;
-
-        documentReference= FirebaseFirestore.getInstance().document(path);
-
-
-
-
-
-        path="users/" + userID + "/1/" + count;
-
-        documentReference= FirebaseFirestore.getInstance().document(path);
-
-        //figure this part out later
-        Map<String, Object> dataToSave = new HashMap<String, Object>();
-        dataToSave.put("Date", completeLogEntry.getDate());
-        dataToSave.put("Sun", completeLogEntry.getSunConditions());
-        dataToSave.put("Wind", completeLogEntry.getWind());
-        dataToSave.put("Temperature", completeLogEntry.getTempInFahrenheit());
-
-        documentReference.set(dataToSave).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-            }
-        });
-
 
         //set each box
         for (int i=0; i<completeLogEntry.getBoxEntries().size();i++) {
+
+            Map<String, Object> dataToSave = new HashMap<String, Object>();
+
             LogBoxEntry currentEntry = completeLogEntry.getBoxEntries().get(i);
-            path = "users/" + userID + "/1/" + count + "/Entries/" + (i+1);
+            String path = "data/" + (count);
 
             documentReference = FirebaseFirestore.getInstance().document(path);
 
             //figure this part out later
             dataToSave = new HashMap<String, Object>();
+
+            dataToSave.put("Date", completeLogEntry.getDate());
+            dataToSave.put("Sun", completeLogEntry.getSunConditions());
+            dataToSave.put("Wind", completeLogEntry.getWind());
+            dataToSave.put("Temperature", completeLogEntry.getTempInFahrenheit());
             dataToSave.put("Activity", currentEntry.getActivity());
             dataToSave.put("Box Number", currentEntry.getBoxNumber());
             dataToSave.put("Eggs", currentEntry.getEggs());
             dataToSave.put("Nestlings", currentEntry.getNestlings());
             dataToSave.put("Nest", currentEntry.getNest());
             dataToSave.put("Species", currentEntry.getSpecies());
+            dataToSave.put("User", userID);
 
             documentReference.set(dataToSave).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
                 }
             });
+            count+=1;
         }
 
     }
+
+
+
 
     private void setLogEntries(){
         Bundle loggingSessionData=getIntent().getExtras();
