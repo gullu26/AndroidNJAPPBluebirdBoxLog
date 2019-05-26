@@ -3,7 +3,7 @@
 package="com.example.sudarshanseshadri.plainsboropreservenestboxmonitoring">
 
 <application
-    android:versionCode="2"
+    android:versionCode="4"
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
     android:label="New Jersey Audubon Plainsboro Preserve Bird Box"

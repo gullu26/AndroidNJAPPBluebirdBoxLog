@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
                 //Adding key value pairs to this bundle
                 //there are quite a lot data types you can store in a bundle
                 extras.putInt("TEMP", Integer.parseInt(et.getText().toString()));
-                extras.putString("DATE", (String) date.getText());
+                extras.putString("DATE", (String) date.getText().toString());
                 extras.putString("SUN", cloudSpinner.getSelectedItem().toString());
                 extras.putString("WIND", (String) windSpinner.getSelectedItem().toString());
 
@@ -279,7 +279,7 @@ public class HomeFragment extends Fragment {
         }
 
 
-        protected int getCloudSpinnerPosition(int conditionId) {
+        private int getCloudSpinnerPosition(int conditionId) {
             //Clear       0
             //Cloudy      1
             //Overcast    2
